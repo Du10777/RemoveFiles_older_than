@@ -1,0 +1,4 @@
+C:\Users\Administrator\documents\visual studio 2010\Projects\RemoveFiles_older_than\RemoveFiles_older_than\bin\Release\RemoveFiles_older_than.exe
+C:\Users\Administrator\documents\visual studio 2010\Projects\RemoveFiles_older_than\RemoveFiles_older_than\bin\Release\RemoveFiles_older_than.pdb
+C:\Users\Administrator\documents\visual studio 2010\Projects\RemoveFiles_older_than\RemoveFiles_older_than\obj\x86\Release\RemoveFiles_older_than.exe
+C:\Users\Administrator\documents\visual studio 2010\Projects\RemoveFiles_older_than\RemoveFiles_older_than\obj\x86\Release\RemoveFiles_older_than.pdb
