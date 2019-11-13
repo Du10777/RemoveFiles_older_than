@@ -26,7 +26,8 @@ namespace RemoveFiles_older_than
             if (!File.Exists(CfgFileName))
             {
                 CreateDefaultConfig(CfgFileName);
-                Environment.Exit(1);
+                Log.Add("Не обнаружен файл конфига. Создан стандартный конфиг");
+                Program.Close(1);
             }
 
             ReadConfig(CfgFileName);
@@ -184,7 +185,7 @@ namespace RemoveFiles_older_than
             Message += "А должен быть формат: дни_часы:минуты:секунды\r\n";
             Message += "Правильный пример 1 день, 2 часа, 3 минуты, 4 секунды: 01_02:03:04";
             Log.Add(Message);
-            Environment.Exit(-2);
+            Program.Close(-2);
         }
 
         static long StringToULong(string Value)
@@ -201,7 +202,7 @@ namespace RemoveFiles_older_than
                 Message += Value + "\r\n";
                 Log.Add(Message);
 
-                Environment.Exit(-6);
+                Program.Close(-6);
             }
 
             return result;
@@ -214,12 +215,12 @@ namespace RemoveFiles_older_than
             if (Folder == defaultFolder)
             {
                 Log.Add("Вы используете папку по умолчанию. Её использовать нельзя. Задайте другое имя папки");
-                Environment.Exit(-3);
+                Program.Close(-3);
             }
             if (TimeSpan.Compare(FilesLifeTime, new TimeSpan(days: 1, hours: 2, minutes: 3, seconds: 4)) == 0)
             {
                 Log.Add("Вы используете \"Срок жизни файлов\" по умолчанию. Его использовать нельзя. Задайте другой Срок жизни файлов");
-                Environment.Exit(-4);
+                Program.Close(-4);
             }
             if (LogsFileName.Length == 0)
             {

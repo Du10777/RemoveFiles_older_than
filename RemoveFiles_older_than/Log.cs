@@ -33,7 +33,7 @@ namespace RemoveFiles_older_than
                 Message += "Error message: " + ex.Message;
 
                 Log.Add(Message);
-                Environment.Exit(-5);
+                Program.Close(-5);
             }
         }
 
@@ -45,6 +45,7 @@ namespace RemoveFiles_older_than
             try
             {//Попытка записать сообщение в файл
                 file.WriteLine(Message);
+                file.Flush();
             }
             catch (Exception)
             {//Если попытка не удалась

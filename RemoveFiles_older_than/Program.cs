@@ -33,8 +33,6 @@ namespace RemoveFiles_older_than
             DeleteOldFiles(Config.Folder);
             DeleteEmptyFolders(Config.Folder);
 
-            Log.Add("--------------------Завершение программы--------------------");
-            Log.Close();
         }
 
         static bool IsSilent(string[] args)
@@ -67,7 +65,7 @@ namespace RemoveFiles_older_than
             if (!Directory.Exists(FolderPath))
             {
                 Log.Add("Не могу найти каталог для зачистки: " + FolderPath);
-                Environment.Exit(-1);
+                Program.Close(-1);
             }
 
             string[] list = Directory.GetFiles(FolderPath, "*", SearchOption.AllDirectories);
@@ -178,6 +176,28 @@ namespace RemoveFiles_older_than
             {
                 Log.Add(ex.Message);
             }
+        }
+
+
+        public static void Close(int ExitCode)
+        {
+            //-6 = Не могу сконвертировать максимальный размер лога
+            //-5 = Не могу открыть файл лога
+            //-4 = Вы используете Срок жизни файлов по умолчанию. Его использовать нельзя. Задайте другой Срок жизни файлов
+            //-3 = Вы используете папку по умолчанию. Её использовать нельзя. Задайте другое имя папки
+            //-2 = Не могу сконвертировать время в понятное для программы
+            //-1 = Не могу найти каталог для зачистки
+            // 1 = Не обнаружен файл конфига. Создан стандартный конфиг
+
+            if (ExitCode == 0)
+                Log.Add("--------------------Завершение программы--------------------");
+            else
+                Log.Add("--------------------АВАРИЙНОЕ Завершение программы. Код выхода: " + ExitCode + " --------------------");
+
+            if (ExitCode != -5)//-5 - не получилось открыть лог. А значит, и закрывать нечего
+            Log.Close();
+
+            Environment.Exit(ExitCode);
         }
     }
 }
