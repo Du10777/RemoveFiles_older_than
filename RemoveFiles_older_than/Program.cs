@@ -33,6 +33,7 @@ namespace RemoveFiles_older_than
             DeleteOldFiles(Config.Folder);
             DeleteEmptyFolders(Config.Folder);
 
+            Close(0);
         }
 
         static bool IsSilent(string[] args)
