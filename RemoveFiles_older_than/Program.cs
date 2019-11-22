@@ -49,7 +49,7 @@ namespace RemoveFiles_older_than
 
         static void CheckFlugFile()
         {//Ожидание завершения работы программы CreationDate_Changer
-            string FlugFileName = Path.Combine(Config.Folder, "CreationDate_Changer_FlugFile");
+            string FlugFileName = Path.Combine(Config.Folder, "!CreationDate_Changer_FlugFile");
             if (!File.Exists(FlugFileName))
                 return;
 
